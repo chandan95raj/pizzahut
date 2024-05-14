@@ -1,4 +1,4 @@
-import { CONFIG } from "../config/index.js"
+import { CONFIG } from "../config/index.js";
 const PIZZASERVICE = {
   
   
