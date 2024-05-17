@@ -10,6 +10,9 @@ body {
   background-image: url('../assets/images/bg.jpg');
   background-size:contain;
 }
+main {
+  width: 100%;
+}
 
 img {
   width: 100%;
@@ -19,6 +22,9 @@ nav {
   background-color: #fff;
   padding: 20px 50px ;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav img{
@@ -37,7 +43,7 @@ nav img{
 #pizzaList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: start;
   align-items: center;
   margin: 10px 20px;
   flex-direction: row;
@@ -60,7 +66,7 @@ nav img{
   padding: 10px;
 }
 
-.cart-btn {
+.cart-btn,#placeOrderBtn {
   margin-top: 30px;
   width: 100%;
   background-color: #0A8020;
@@ -72,9 +78,76 @@ nav img{
   cursor: pointer;
 }
 
+.gridBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 50px;
+}
+
+#login,#signin {
+  border: 0;
+  padding: 8px 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+#login {
+  background-color: #0A8020;
+}
+#signin {
+  background-color: #2a34bb;
+}
+
+#orderLists{
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+}
+
+.loginSignBox {
+  width: 600px;
+  margin: 50px auto;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0px 2px 8px #ccc;
+}
+
+.loginSignBox h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-box {
+  padding:20px 20px 0 20px;
+}
+.form-box input{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.loginSigninbtn {
+  width: 50%;
+  background-color: #0A8020;
+  color: #fff;
+  font-weight: bold;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
 @media (max-width:600px) {
   nav {
-    padding: 15px 0px ;
+    padding: 15px 10px ;
     text-align: center;
+  }
+  .gridBox {
+    grid-template-columns: 1fr;
+  }
+  .loginSignBox {
+    width: 95%;
   }
 }
