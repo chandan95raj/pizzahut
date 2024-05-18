@@ -1,22 +1,22 @@
 import PIZZASERVICE from "../services/pizzaService.js"
 import ORDERSERVICES from "../services/orderService.js";
 
-window.addEventListener("DOMContentLoaded",bindEvents);
+window.addEventListener("DOMContentLoaded", bindEvents);
 
-function bindEvents(){
-    getPizzaData();
+function bindEvents() {
+  getPizzaData();
 }
 
-async function getPizzaData(){
-    const pizzaList = await PIZZASERVICE.getData();
-    printdata(pizzaList)
+async function getPizzaData() {
+  const pizzaList = await PIZZASERVICE.getData();
+  printdata(pizzaList)
 }
 
-function printdata(pizzas){
+function printdata(pizzas) {
   // const pizzas = data.pizzas;
- 
+
   let pizzaList = document.getElementById("pizzaList");
- 
+
   pizzas.forEach(pizza => {
     let card = document.createElement("div");
     card.classList.add("card");
@@ -42,9 +42,9 @@ function printdata(pizzas){
 
     let btn = document.createElement("button");
     btn.classList.add("cart-btn")
-    btn.setAttribute("pizzaId",pizza.id);
+    btn.setAttribute("pizzaId", pizza.id);
 
-    btn.addEventListener("click",addToCart)
+    btn.addEventListener("click", addToCart)
 
     btn.innerText = "Add To Cart"
     cardBody.appendChild(btn)
@@ -60,16 +60,16 @@ function printdata(pizzas){
     //       </div>
     // <div><button class="addToCart" >Add to card </button></div>
     // `
-    
+
     // pizzaList.appendChild(card);
     // document.querySelector(".addToCart").addEventListener("click",addToCart)
   });
 
-  
- 
+
+
 }
 
-function addToCart(){
+function addToCart() {
   const value = this.getAttribute("pizzaId");
   console.log(value);
   ORDERSERVICES.addToCart(value);
@@ -77,10 +77,29 @@ function addToCart(){
   printOrders();
 }
 
-function printOrders(){
-   document.getElementById("orderCount").innerText = ORDERSERVICES.getTotalOrders();
-   console.log(ORDERSERVICES.getTotalBill());
-   document.getElementById("totalBill").innerText = ORDERSERVICES.getTotalBill();
-   document.getElementById("pizzaName").innerText = ORDERSERVICES.getPizzaName();
-   document.getElementById("pizzaPrice").innerText = ORDERSERVICES.getPizzaPrice();
+function printOrders() {
+  const orderList = ORDERSERVICES.getOrders();
+  // <li>
+  //               <div class="pizza Name">Pepperoni</div>
+  //               <div class="pizza price">$12.99</div>
+  //               <div class="pizza count">2</div>
+  //             </li>
+
+  const ul = document.getElementById("orderList");
+  ul.innerHTML = ""
+  orderList.forEach((order) => {
+    const li = document.createElement("li");
+    li.classList.add("orderLists")
+    li.innerHTML = `<div class="pizza Name">${order.name}</div>
+                 <div class="pizza price">${order.price}</div>
+                <div class="pizza count">${order.count}</div>`
+
+    ul.appendChild(li)
+  })
+
+  document.getElementById("orderCount").innerText = ORDERSERVICES.getTotalOrders();
+  console.log(ORDERSERVICES.getTotalBill());
+  document.getElementById("totalBill").innerText = ORDERSERVICES.getTotalBill();
+
+
 }

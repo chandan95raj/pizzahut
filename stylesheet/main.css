@@ -99,7 +99,7 @@ nav img{
   background-color: #2a34bb;
 }
 
-#orderLists{
+.orderLists{
   display: flex;
   justify-content: space-between;
   background-color: gray;
