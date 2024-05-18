@@ -92,7 +92,11 @@ function printOrders() {
     li.classList.add("orderLists")
     li.innerHTML = `<div class="pizza Name">${order.name}</div>
                  <div class="pizza price">${order.price}</div>
-                <div class="pizza count">${order.count}</div>`
+                <div class="pizzaCount">
+                <button>+</button>
+                  ${order.count}
+                <button>-</button>
+                </div>`
 
     ul.appendChild(li)
   })

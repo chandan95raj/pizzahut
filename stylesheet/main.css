@@ -102,9 +102,11 @@ nav img{
 .orderLists{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: gray;
   padding: 5px 20px;
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .loginSignBox {
@@ -136,6 +138,20 @@ nav img{
   border: 0;
   border-radius: 5px;
   padding: 10px 0;
+  cursor: pointer;
+}
+
+.pizzaCount {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pizzaCount button {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 0;
   cursor: pointer;
 }
 
