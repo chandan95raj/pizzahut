@@ -45,7 +45,7 @@ nav img{
   flex-wrap: wrap;
   justify-content: start;
   align-items: center;
-  margin: 10px 20px;
+  /* margin: 10px 20px; */
   flex-direction: row;
   gap: 20px;
 }
@@ -82,7 +82,7 @@ nav img{
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding: 0 50px;
+  padding: 0 25px;
 }
 
 #login,#signin {
@@ -159,6 +159,9 @@ nav img{
   nav {
     padding: 15px 10px ;
     text-align: center;
+  }
+  .card {
+    width: 100%;
   }
   .gridBox {
     grid-template-columns: 1fr;
