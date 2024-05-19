@@ -2,52 +2,66 @@ import { Order } from "../model/orders.js";
 import PIZZASERVICE from "./pizzaService.js";
 
 const ORDERSERVICES = {
-    orderList:[], //database
-    totalBill:0,
-    addToCart(pizzaId){
-        const pizza =  PIZZASERVICE.serachPizza(pizzaId);
-       
+    orderList: [], //database
+    totalBill: 0,
+    count: 0,
+    addToCart(pizzaId) {
+        const pizza = PIZZASERVICE.serachPizza(pizzaId);
 
-        let order =  this.orderList.find((order)=>order.pizzaId == pizzaId);
+        let order = this.orderList.find((order) => order.pizzaId == pizzaId);
 
-        if(order!=null){
-            order.count = order.count +1;
+        if (order != null) {
+            order.count = order.count + 1;
             this.totalBill = this.totalBill + this.makeBill(pizza.price);
         }
-        else{
-            let orderObj = new Order(1,pizza.id,"Aman ",1);
+        else {
+            let orderObj = new Order(this.count, 1, pizza.id, "Aman ", 1);
+            this.count = this.count + 1;
             this.totalBill = this.totalBill + this.makeBill(pizza.price);
             this.orderList.push(orderObj);
         }
-        
+
         // console.log(this.orderList);
     },
-    getOrders(){
+    getOrders() {
         // orderId,price,count,pizza name 
 
         let orders = []
-        this.orderList.forEach((order)=>{
+        this.orderList.forEach((order) => {
             console.log(order);
             let pizza = PIZZASERVICE.serachPizza(order.pizzaId);
             let pizzaDetails = {
-                name:pizza.name,
-                price :pizza.price,
-                count : order.count
+                orderId: order.orderId,
+                name: pizza.name,
+                price: pizza.price,
+                count: order.count
             }
             orders.push(pizzaDetails);
         })
 
         return orders;
     },
-    getTotalOrders(){
+    incDecCount(orderId, value) {
+        let order = this.orderList.find((order) => order.orderId == orderId);
+
+        if (value == "+") {
+            order.count = order.count + 1;
+        }
+        else if (value == "-") {
+            if (order.count > 1) {
+                order.count = order.count - 1;
+            }
+        }
+    },
+    getTotalOrders() {
         let count = 0;
-        this.orderList.forEach(order=>{count = count + order.count})
+        this.orderList.forEach(order => { count = count + order.count })
         return count;
     },
-    getTotalBill(){
+    getTotalBill() {
         return this.totalBill;
     },
-    makeBill(value){
+    makeBill(value) {
         return parseFloat(value.slice(1));
     }
 }
