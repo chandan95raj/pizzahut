@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup | Pizzahut</title>
-    <script type="module" src="javascript/controller/index.js"></script>
-    <script type="module" src="javascript/controller/userController.js"></script>
+    <script
+      type="module"
+      src="javascript/controller/signUpController.js"
+    ></script>
     <link rel="stylesheet" href="stylesheet/main.css" />
 </head>
 
@@ -24,7 +26,7 @@
         <div class="loginSignBox">
             <h2>SignUp</h2>
             <hr>
-            <form id="signupForm" class="form-box">
+            <form id="signupForm" method="get" class="form-box">
                 <label for="username">User Name:</label>
                 <input type="text" placeholder="username" name="username" id="username" required />
                 <label for="email">Email:</label>
